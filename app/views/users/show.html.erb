@@ -2,12 +2,11 @@
 
 <% @events.each do |event| %>
 
-<%= event.event_type %>
+<%= event.date %> <br>
 
-<%= event.event_rate %>
+<%= event.description %> <br>
 
-<%= event.event_date %>
+<%= User.find(event.user_id).name %> <br>
 
-<%= event.event_description %> <br>
 
 <% end %>
