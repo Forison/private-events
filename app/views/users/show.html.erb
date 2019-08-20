@@ -1,2 +1,13 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1>These are random events </h1>
+
+<% @events.each do |event| %>
+
+<%= event.event_type %>
+
+<%= event.event_rate %>
+
+<%= event.event_date %>
+
+<%= event.event_description %> <br>
+
+<% end %>
