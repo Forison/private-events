@@ -1,9 +1,15 @@
 class EventsController < ApplicationController
+  
+  def index
+    @events = Event.order(created: :desc)
+  end
+
   def new
     @event = Event.new
   end
 
   def create
+    # debugger
     @event = current_user.events.build(event_params)
     if @event.save
       flash[:success] = "Event created successfully!"
@@ -14,14 +20,12 @@ class EventsController < ApplicationController
   end
 
   def show
-  end
-
-  def index
+    @event=Event.find(params[id])
   end
 
   private 
-
   def event_params
-    params.require(:event).permit(:description, :date, :user_id)
+    params.require(:event).permit(:description, :date)
   end
+  
 end

@@ -1,2 +1,13 @@
-<h1>Events#index</h1>
-<p>Find me in app/views/events/index.html.erb</p>
+<h1 class="text-center">Index page of Event</h1>
+
+<div class="container mt-2">
+    <div class="row">
+        <% @events.each do |event|%>
+        <div class="col-12 col-sm-6 col-md-4 col-md-3 event_index_col">
+            <span class="pull-left"><%= time_ago_in_words(event.date)%></span>
+            <p><%= event.description %></p>
+            <p><%= User.find(event.user_id).name %></p>
+        </div>
+        <% end %>
+    </div>
+</div>
