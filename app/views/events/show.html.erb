@@ -1,2 +1,16 @@
-<h1>Events#show</h1>
-<p>Find me in app/views/events/show.html.erb</p>
+
+<nav>
+<h1>Event attendees</h1>
+</nav>
+
+People coming to <br>
+
+
+<%= @event.description %> <br>
+
+<% @event.attendances.each do |attendances| %>
+
+<%= User.find(attendances.user_id).name %> <br>
+
+
+<% end %>

@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   post "events/new"
   resource :users
   resource :sessions
+  resource :events
 end
