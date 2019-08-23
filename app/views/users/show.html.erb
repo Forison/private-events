@@ -1,12 +1,25 @@
-<h1>These are random events </h1>
+<h1>Hi <%= @user.name %> </h1>
 
-<% @events.each do |event| %>
+<p>Here are all your related events.</p>
 
-<%= event.date %> <br>
-
-<%= event.description %> <br>
-
-<%= User.find(event.user_id).name %> <br>
-
+<h2 class="m-5">Events you are hosting</h2>
+<% @user.events.each do |event| %>
+<div class="m-5 border-success border">
+<%= event.description %> 
+</div>
 
 <% end %>
+
+<h2 class="m-5"> Events you are attending: </h2>
+<% @user.attendances.each do |attendance| %>
+<div class="m-5 border-success border">
+<%= @events.find(attendance.event_id).description %> 
+</div>
+
+<% end %>
+
+
+
+<!-- PREVIOUS CODE (Showing all the previous events available in the website)
+     ==> [ It should show ] the events created by the users and the events
+     that the user will be attending.  -->

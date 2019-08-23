@@ -2,12 +2,12 @@
 <div class="space"></div>
 <div class="container ">
     <div class=" shaddow col-xs-10 mx-auto col-sm-6  col-md-4 col-lg-4 signup_wrap">
-        <h1 class="text-center signup">Sign In</h1>
-        <%= form_for(:session , url: sessions_path ) do |f| %>
-        <%= f.label :name %> <br>
-        <%= f.text_field :name, class: 'form-control' %> <br>
+        <h1 class="m-5 text-center signup">Log In</h1>
+        <%= form_for(:session , url: login_path ) do |f| %>
+        <%= f.label :email %> <br>
+        <%= f.text_field :email, class: 'form-control' %> <br>
         <%= f.submit "login"%>
-        <p class="note">not yet a member? <%= link_to "sign up", users_path %> </p>
+        <p class="note">not yet a member? <%= link_to "sign up", new_users_path %> </p>
         <% end %>
 
     </div>

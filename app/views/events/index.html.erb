@@ -1,13 +1,13 @@
-<h1 class="text-center">Index page of Event</h1>
-
-<div class="container mt-2">
-    <div class="row">
-        <% @events.each do |event|%>
-        <div class="col-12 col-sm-6 col-md-4 col-md-3 event_index_col">
-            <span class="pull-left"><%= time_ago_in_words(event.date)%></span>
-            <p><%= event.description %></p>
-            <p><%= User.find(event.user_id).name %></p>
-        </div>
-        <% end %>
-    </div>
-</div>
+<nav>
+    <h1 class="m-5">List of available events</h1>
+</nav>
+        
+        
+  <div class="m-5 border border-success">
+    <%= @event.description %> <br>
+    <% @event.attendances.each do |attendances| %>
+  <div class="border">
+        <%= User.find(attendances.user_id).name %> <br>
+      </div>
+    <% end %>
+      </div>

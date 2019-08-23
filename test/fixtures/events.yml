@@ -1,11 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  description: MyText
+  description: "This is a special event. Join us for fun!"
   date: 2019-08-09 08:26:11
-  user: one
 
-two:
-  description: MyText
-  date: 2019-08-09 08:26:11
-  user: two
+
