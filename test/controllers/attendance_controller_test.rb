@@ -2,9 +2,9 @@
 
 require 'test_helper'
 
-class SessionsControllerTest < ActionDispatch::IntegrationTest
+class AttendanceControllerTest < ActionDispatch::IntegrationTest
   test 'should get new' do
-    get login_path
+    get attendance_new_url
     assert_response :success
   end
 end

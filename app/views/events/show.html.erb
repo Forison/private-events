@@ -7,14 +7,31 @@
         
         <% @event.each do |event| %>
         <div class="events m-5 border">
+       <h4>Host:</h4>
+        <%= User.find(event.user_id).name %> <br>
+<h4> Event Description:</h4>
         <%= event.description %> <br>
+
+        <!-- Trying to set up the attend button -->
+        <%= form_for(@attendance , url: attendance_attend_path ) do |f| %>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+        <%= f.hidden_field :event_id, :value => event.id %>
+        <%= f.submit "attend" , class: "btn btn-primary" %> <br>
         
+        <% end %>
+
+
+        <h4>List of attendees</h4>
         <% event.attendances.each do |attendances| %>
         
         <div class="events border">
+        <h3>Attendants: </h3>
         <%= User.find(attendances.user_id).name %> <br>
+
         </div>
         <% end %>
+
+
         </div>
         <% end %>
 

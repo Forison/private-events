@@ -1,9 +1,10 @@
+<main>
 <nav>
     <h1 class="m-5">List of available events</h1>
 </nav>
         
         
-  <div class="m-5 border border-success">
+  <div class="m-5 border border-success events">
     <%= @event.description %> <br>
     <% @event.attendances.each do |attendances| %>
   <div class="border">
@@ -11,3 +12,5 @@
       </div>
     <% end %>
       </div>
+</main>
+
