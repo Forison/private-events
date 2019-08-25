@@ -1,10 +1,12 @@
-<h1>Hi <%= @user.name %> </h1>
+<main>
+<div class="m-5 border text-center"><h1>Hi <%= @user.name %> </h1>
 
 <p>Here are all your related events.</p>
+</div>
 
 <h2 class="m-5">Events you are hosting</h2>
 <% @user.events.each do |event| %>
-<div class="m-5 border-success border">
+<div class="events m-5 border">
 <%= event.description %> 
 </div>
 
@@ -12,11 +14,12 @@
 
 <h2 class="m-5"> Events you are attending: </h2>
 <% @user.attendances.each do |attendance| %>
-<div class="m-5 border-success border">
+<div class="events m-5 border">
 <%= @events.find(attendance.event_id).description %> 
 </div>
 
 <% end %>
+</main>
 
 
 

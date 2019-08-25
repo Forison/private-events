@@ -17,7 +17,7 @@
 <div class="border"><%= link_to  "Log in", login_path %> <br> </div>
 <%else%>
 <div class="border"><%= link_to  "Log out" %> <br> </div>
-
+<div class="border"><%= link_to  "You are logged in as #{current_user.name}", users_path(current_user) %> <br> </div>
 <%end%>
 <div class="border"><%= link_to  "Create event", events_new_path %> <br> </div>
 <div class="border"><%= link_to  "Your events", users_path(current_user) %> <br> </div>

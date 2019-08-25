@@ -1,2 +1,15 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+
+body{
+    background-image: url(asset_path("back.jpg"))
+}
+
+h1, h2, h3{ color: whitesmoke;}
+
+.events{
+    background: rgb(158, 199, 130);
+    height: 100px;
+
+}

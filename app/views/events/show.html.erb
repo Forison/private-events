@@ -1,19 +1,21 @@
-
-<nav>
-        <h1 class="m-5">List of available events</h1>
+<main>
+        <nav class="m-5 border text-center">
+        <h1>List of available events</h1>
         </nav>
         
         SHOW PAGE 
         
         <% @event.each do |event| %>
-        <div class="m-5 border border-success">
+        <div class="events m-5 border">
         <%= event.description %> <br>
         
         <% event.attendances.each do |attendances| %>
         
-        <div class="border">
+        <div class="events border">
         <%= User.find(attendances.user_id).name %> <br>
         </div>
         <% end %>
         </div>
         <% end %>
+
+</main>
