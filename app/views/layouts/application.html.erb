@@ -10,13 +10,13 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
 
-<div class="flex-row border border-danger d-flex flex-nowrap bd-highlight">
+<div class="nav-eventia flex-row border d-flex flex-nowrap bd-highlight">
 <div class="border"><%= link_to  "Main", root_path %> <br></div>
 <% if !logged_in? %>
 <div class="border"><%= link_to  "Sign up", new_users_path %> <br></div>
 <div class="border"><%= link_to  "Log in", login_path %> <br> </div>
 <%else%>
-<div class="border"><%= link_to  "Log out" %> <br> </div>
+<div class="border"><%= link_to  "Log out", logout_path, method: :delete %> <br> </div>
 <div class="border"><%= link_to  "You are logged in as #{current_user.name}", users_path(current_user) %> <br> </div>
 <%end%>
 <div class="border"><%= link_to  "Create event", events_new_path %> <br> </div>
@@ -32,7 +32,6 @@
   <%end%>
   <%= yield %>
 
-  <%= debug(params) if Rails.env.development? %>
 </body>
 
 

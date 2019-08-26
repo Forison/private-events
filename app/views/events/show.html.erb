@@ -11,8 +11,10 @@
         <%= User.find(event.user_id).name %> <br>
 <h4> Event Description:</h4>
         <%= event.description %> <br>
+        <h4>When is it taking place:</h4>
+        <%= event.date %> <br>
 
-        <!-- Trying to set up the attend button -->
+        <!--attend button -->
         <%= form_for(@attendance , url: attendance_attend_path ) do |f| %>
         <%= f.hidden_field :user_id, :value => current_user.id %>
         <%= f.hidden_field :event_id, :value => event.id %>

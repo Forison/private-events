@@ -1,24 +1,48 @@
-<main>
+<main class="container">
 <div class="m-5 border text-center"><h1>Hi <%= @user.name %> </h1>
 
 <p>Here are all your related events.</p>
 </div>
 
 <h2 class="m-5">Events you are hosting</h2>
-<% @user.events.each do |event| %>
+
+<!-- Trying to add a header to the hosted events past/future -->
+<div class="row">
+
+<div class="col-5">
+<h4 class = "events m-5">Past events</h4>
+<% @user.events.past(Time.now).each do |event| %>
 <div class="events m-5 border">
-<%= event.description %> 
+<%= event.description %> <br>
+<%= event.date %>
+</div>
+<% end %>
 </div>
 
-<% end %>
+<div class="col-2"></div>
+<div class="col-5">
+        <h4 class = "events m-5">Upcoming events</h4>
+        <% @user.events.upcoming(Time.now).each do |event| %>
+        <div class="events m-5 border">
+        <%= event.description %> <br>
+        <%= event.date %>
+        </div>
+        <% end %>
+        </div>
 
+
+</div>
+
+<div class="row">
 <h2 class="m-5"> Events you are attending: </h2>
 <% @user.attendances.each do |attendance| %>
-<div class="events m-5 border">
+<div class="col-5 events m-5 border">
 <%= @events.find(attendance.event_id).description %> 
 </div>
 
 <% end %>
+
+</div>
 </main>
 
 

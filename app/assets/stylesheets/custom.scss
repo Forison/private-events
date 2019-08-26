@@ -1,9 +1,10 @@
-@import "bootstrap-sprockets";
 @import "bootstrap";
 
 
 body{
-    background-image: url(asset_path("back.jpg"))
+    background-image: url(asset_path("back.jpg"));
+    padding-top:70px;
+
 }
 
 h1, h2, h3{ color: whitesmoke;}
@@ -12,4 +13,18 @@ h1, h2, h3{ color: whitesmoke;}
     background: rgb(158, 199, 130);
     height: 100%;
 
+}
+
+
+
+// navigation bar
+
+.nav-eventia{
+
+    background: rgb(233, 233, 233);
+    height: 40px;
+    position: fixed;
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
 }
