@@ -51,11 +51,14 @@
                 <h4>Past events</h4>
 
             <% @user.attendances.each do |attendance| %>
+            <% if @events.past(Time.now).exists?(attendance.event_id) %>
             <div class="mb-bit events border">
-                <%= @events.find(attendance.event_id).description %> <br>
-                <%= @events.find(attendance.event_id).date %> <br>
+                <%= @events.past(Time.now).find(attendance.event_id).description %> <br>
+                <%= @events.past(Time.now).find(attendance.event_id).date %> <br>
 
             </div>
+
+            <%end%>
 
             <% end %>
 
@@ -67,12 +70,16 @@
                 <h4>Upcoming events</h4>
 
             <% @user.attendances.each do |attendance| %>
+            <% if @events.upcoming(Time.now).exists?(attendance.event_id) %>
+
             <div class="events border mb-bit">
-                    <%= @events.find(attendance.event_id).description %> <br>
-                    <%= @events.find(attendance.event_id).date %> <br>       
+                    <%= @events.upcoming(Time.now).find(attendance.event_id).description %> <br>
+                    <%= @events.upcoming(Time.now).find(attendance.event_id).date %> <br>       
                      </div>
 
             <% end %>
+            <% end %>
+
         </div>
 
     </div>
