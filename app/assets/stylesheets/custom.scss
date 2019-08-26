@@ -21,6 +21,12 @@ h1, h2, h3{ color: whitesmoke;}
     background: #015228;
 }
 
+//website boxes
+
+.webox{
+    background: linear-gradient(rgb(155, 175, 155), rgb(142, 192, 142));
+}
+
 // borders
 
 .mb-std{
@@ -38,7 +44,7 @@ h1, h2, h3{ color: whitesmoke;}
 // heights
 
 .tall-box{
-    height: 100%;
+    height: auto;
     overflow: auto;
 
 }

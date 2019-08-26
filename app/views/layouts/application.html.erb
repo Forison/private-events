@@ -10,7 +10,7 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
 
-<div class="nav-eventia navbar navbar-dark bg-dark flex-row border d-flex flex-nowrap bd-highlight">
+<div class="nav-eventia navbar navbar-dark bg-dark flex-row  d-flex flex-nowrap bd-highlight">
   <div class="tborder"><%= link_to  "Main", root_path %> <br></div>
   <% if !logged_in? %>
   <div class="tborder"><%= link_to  "Sign up", new_users_path %> <br></div>
