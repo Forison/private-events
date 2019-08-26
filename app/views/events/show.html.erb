@@ -1,12 +1,12 @@
 <main>
 
-                <nav class="m-5 border text-center">
+                <nav class="m-5 text-center">
                                 <h1>List of upcoming events</h1>
                         </nav>
                 
                 
                         <% @event.upcoming(Time.now).each do |event| %>
-                        <div class="events m-5 border">
+                        <div class="rounded events m-5">
                                 <h4>Host:</h4>
                                 <%= User.find(event.user_id).name %> <br>
                                 <h4> Event Description:</h4>
@@ -26,14 +26,15 @@
                 
                 
                                 <h4>List of attendees</h4>
+                                <div class="events">
+
                                 <% event.attendances.each do |attendances| %>
                 
-                                <div class="events border">
-                                        <h3>Attendants: </h3>
                                         <%= User.find(attendances.user_id).name %> <br>
                 
-                                </div>
                                 <% end %>
+                        </div>
+
                 
                 
                         </div>
@@ -51,13 +52,13 @@
 
 
 
-        <nav class="m-5 border text-center">
+        <nav class="m-5 text-center">
                 <h1>List of past events</h1>
         </nav>
 
 
         <% @event.past(Time.now).each do |event| %>
-        <div class="events m-5 border">
+        <div class="rounded events m-5">
                 <h4>Host:</h4>
                 <%= User.find(event.user_id).name %> <br>
                 <h4> Event Description:</h4>
@@ -68,14 +69,15 @@
 <h5>You can't join this event. It is already past</h5>
 
                 <h4>List of attendees</h4>
+                <div class="events">
+
                 <% event.attendances.each do |attendances| %>
 
-                <div class="events border">
-                        <h3>Attendants: </h3>
                         <%= User.find(attendances.user_id).name %> <br>
 
-                </div>
                 <% end %>
+        </div>
+
 
 
         </div>
