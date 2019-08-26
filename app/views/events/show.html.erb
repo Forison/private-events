@@ -1,37 +1,90 @@
 <main>
+
+                <nav class="m-5 border text-center">
+                                <h1>List of upcoming events</h1>
+                        </nav>
+                
+                
+                        <% @event.upcoming(Time.now).each do |event| %>
+                        <div class="events m-5 border">
+                                <h4>Host:</h4>
+                                <%= User.find(event.user_id).name %> <br>
+                                <h4> Event Description:</h4>
+                                <%= event.description %> <br>
+                                <h4>When is it taking place:</h4>
+                                <%= event.date %> <br>
+                
+                                <!--attend button -->
+                                <% if current_user %>
+                                <%= form_for(@attendance , url: attendance_attend_path ) do |f| %>
+                                <%= f.hidden_field :user_id, :value => current_user.id %>
+                                <%= f.hidden_field :event_id, :value => event.id %>
+                                <%= f.submit "attend" , class: "btn btn-primary" %> <br>
+                
+                                <% end %>
+                                <% end %>
+                
+                
+                                <h4>List of attendees</h4>
+                                <% event.attendances.each do |attendances| %>
+                
+                                <div class="events border">
+                                        <h3>Attendants: </h3>
+                                        <%= User.find(attendances.user_id).name %> <br>
+                
+                                </div>
+                                <% end %>
+                
+                
+                        </div>
+                        <% end %>
+                
+
+
+
+
+
+
+
+        <!-- past events -->
+
+
+
+
         <nav class="m-5 border text-center">
-        <h1>List of available events</h1>
+                <h1>List of past events</h1>
         </nav>
-        
-        SHOW PAGE 
-        
-        <% @event.each do |event| %>
+
+
+        <% @event.past(Time.now).each do |event| %>
         <div class="events m-5 border">
-       <h4>Host:</h4>
-        <%= User.find(event.user_id).name %> <br>
-<h4> Event Description:</h4>
-        <%= event.description %> <br>
-        <h4>When is it taking place:</h4>
-        <%= event.date %> <br>
+                <h4>Host:</h4>
+                <%= User.find(event.user_id).name %> <br>
+                <h4> Event Description:</h4>
+                <%= event.description %> <br>
+                <h4>When is it taking place:</h4>
+                <%= event.date %> <br>
 
-        <!--attend button -->
-        <%= form_for(@attendance , url: attendance_attend_path ) do |f| %>
-        <%= f.hidden_field :user_id, :value => current_user.id %>
-        <%= f.hidden_field :event_id, :value => event.id %>
-        <%= f.submit "attend" , class: "btn btn-primary" %> <br>
-        
-        <% end %>
+                <!--attend button -->
+                <% if current_user %>
+                <%= form_for(@attendance , url: attendance_attend_path ) do |f| %>
+                <%= f.hidden_field :user_id, :value => current_user.id %>
+                <%= f.hidden_field :event_id, :value => event.id %>
+                <%= f.submit "attend" , class: "btn btn-primary" %> <br>
+
+                <% end %>
+                <% end %>
 
 
-        <h4>List of attendees</h4>
-        <% event.attendances.each do |attendances| %>
-        
-        <div class="events border">
-        <h3>Attendants: </h3>
-        <%= User.find(attendances.user_id).name %> <br>
+                <h4>List of attendees</h4>
+                <% event.attendances.each do |attendances| %>
 
-        </div>
-        <% end %>
+                <div class="events border">
+                        <h3>Attendants: </h3>
+                        <%= User.find(attendances.user_id).name %> <br>
+
+                </div>
+                <% end %>
 
 
         </div>

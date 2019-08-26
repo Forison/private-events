@@ -9,11 +9,36 @@ body{
 
 h1, h2, h3{ color: whitesmoke;}
 
+
+
 .events{
     background: rgb(158, 199, 130);
     height: 100%;
 
 }
+
+// borders
+
+.mb-std{
+    margin-bottom: 100px;
+}
+
+.mb-bit{
+    margin-bottom: 50px;
+}
+
+.mt-std{
+    margin-top: 5px;
+}
+
+// heights
+
+.tall-box{
+    height: 100%;
+    overflow: auto;
+
+}
+
 
 
 
@@ -23,8 +48,9 @@ h1, h2, h3{ color: whitesmoke;}
 
     background: rgb(233, 233, 233);
     height: 40px;
-    position: fixed;
     position: fixed; /* Set the navbar to fixed position */
     top: 0; /* Position the navbar at the top of the page */
     width: 100%; /* Full width */
+    z-index: 9999;
+
 }
