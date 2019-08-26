@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:success] = 'Welcome to the Sample App!'
+      flash[:success] = 'Welcome to Eventia !'
       redirect_to root_path
       log_in @user
     else

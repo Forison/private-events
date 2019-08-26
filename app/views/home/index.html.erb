@@ -1,10 +1,15 @@
-<main>
-<div class = "border m-5 border text-center">
+<main class="main-page">
+<div class = "m-5  text-center">
+    <div class="logo">
+            <%= image_tag("logo.png", :alt => "logo") %>
+    </div>
+    <div>
 <h1 class="m-5"> Eventia. Let's gather.</h1>
+</div>
 
 </div>
 
-<div class="m-5 border">
+<div class="m-5">
     <% if current_user %>
     <p>You are now logged as
 
