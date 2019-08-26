@@ -1,2 +1,12 @@
-<h1>Events#show</h1>
-<p>Find me in app/views/events/show.html.erb</p>
+<%= provide(:title,'event show')%>
+<h1 class="text-center">Events show page</h1>
+
+<div class="container mt-2">
+    <div class="row">
+        <% @attendees.each do | x |%>
+        <div class="col-12 col-sm-6 col-md-4 col-md-3 event_index_col">
+            <p><%= x.name %></p>
+        </div>
+        <% end %>
+    </div>
+</div>

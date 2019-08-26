@@ -20,7 +20,9 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event=Event.find(params[id])
+    # @attendees=Attendance.select('user_id').pluck
+    event = Event.find(params[:id])
+    @attendees = event.attendees
   end
 
   private 

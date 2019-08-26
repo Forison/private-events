@@ -1,12 +1,19 @@
-<h1>These are random events </h1>
+<h1>Make a User’s Show page display a list of events they are attending. </h1>
+<h1>upcoming events</h1>
+<% @upcoming.each do |my_event| %>
 
-<% @events.each do |event| %>
+<%= my_event.date %> <br>
 
-<%= event.date %> <br>
+<%= my_event.description %> <br>
 
-<%= event.description %> <br>
+<% end %>
 
-<%= User.find(event.user_id).name %> <br>
+<h1>past events</h1>
 
+<% @previous.each do |my_event| %>
+
+<%= my_event.date %> <br>
+
+<%= my_event.description %> <br>
 
 <% end %>

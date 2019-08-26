@@ -1,3 +1,5 @@
 class User < ApplicationRecord
-    has_many :events , dependent: :destroy
+    has_many :attendances
+    has_many :attended_event , through: :attendances, dependent: :destroy
+    
 end

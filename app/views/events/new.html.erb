@@ -3,7 +3,7 @@
 <div class="container ">
     <div class=" shaddow col-xs-10 mx-auto col-sm-6  col-md-4 col-lg-4 signup_wrap">
         <h1 class="text-center signup">Signup <%= current_user %></h1>
-        <%= form_for(@event, url: events_new_path) do |f| %>
+        <%= form_for(@event, url: events_path) do |f| %>
         <%= f.date_field :date %>
 
         <%= f.label :description, "description" %> <br>
