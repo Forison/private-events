@@ -1,7 +1,8 @@
 class EventsController < ApplicationController
   
   def index
-    @events = Event.order(created: :desc)
+    @upcoming_events = Event.upcoming
+    @past_events = Event.past
   end
 
   def new
