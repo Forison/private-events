@@ -7,14 +7,17 @@ ruby '2.6.1'
 gem 'rails', '~> 5.2.3'
 gem 'bootstrap', '~> 4.0.0'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
-gem "font-awesome-rails"
+gem 'font-awesome-rails', '~> 4.6', '>= 4.6.3.1'
+gem 'image_processing', '~> 1.2'
+gem 'will_paginate',           '3.1.7'
+gem 'bootstrap-will_paginate', '1.0.0'
 # Use sqlite3 as the database for Active Record
-group :development do
-  gem 'sqlite3' 
-end
-group :production do
+# group :development do
+#   gem 'sqlite3' 
+# end
+# group :production do
   gem 'pg' 
-end
+# end
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -36,7 +39,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 
 # Use ActiveStorage variant
-# gem 'mini_magick', '~> 4.8'
+gem 'mini_magick', '~> 4.8'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

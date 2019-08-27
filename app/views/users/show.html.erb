@@ -1,19 +1,78 @@
-<h1>Make a User’s Show page display a list of events they are attending. </h1>
-<h1>upcoming events</h1>
-<% @upcoming.each do |my_event| %>
+<%= provide(:title, 'show users events') %>
+<h1 class="text-center">all user events</h1>
+<div class="container">
+    <h1 class="tit">Hosted Events</h1>
+    <div class="row">
+        <% @hosting.each do |my_event| %>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-4 event_index_col">
+            <div class="card shaddow_2">
+                <div class="card-header">
+                    <span class="float-right"><%= time_ago_in_words(my_event.date) %> from now</span>
+                </div>
+                <div class="card-body">
+                    <p><%= my_event.description[0..50] %>...</p>
+                </div>
+                <div class="card-footer">
+                    <!--end-main-container-->
+                    <div class="talkbubble-wrap">
+                        <button type="button" class="btn fa-lg" data-toggle="modal" data-target="#myModal">Invite
+                            User(s)</button>
+                    </div>
+                </div>
+            </div>
 
-<%= my_event.date %> <br>
+        </div>
+        <% end %>
+    </div>
+</div>
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
 
-<%= my_event.description %> <br>
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Invite User(s)</h4>
+            </div>
+            <div class="modal-body">
+                <% @user.each do |u|%>
+                <span>
+                    <%= form_for(@invite, url: { :controller=>'users', :action=>'invite'}) do |f|%>
+                    <span><%= u.name.upcase %></span>
+                    <%= f.hidden_field :invite, :value => u.id %>
+                    <%= f.submit "Invite Me", class: "btn btn-sm btn-primary float-right mb-2 " %>
+                    <% end %>
+                </span>
+                <hr>
+                <% end %>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
 
-<% end %>
+    </div>
+</div>
+<br>
+<div class="container">
+    <h1 class="tit">Guesting Event(s)</h1>
+    <div class="row">
 
-<h1>past events</h1>
+        <% @guesting.each do |my_event| %>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 event_index_col">
+            <div class="card shaddow_2">
+                <div class="card-header">
+                    <span class="float-right"><%= time_ago_in_words(my_event.date) %> from now</span>
+                </div>
+                <div class="card-body">
+                    <p><%= my_event.description[0..80] %> ...</p>
+                </div>
+                <div class="card-footer">
+                    <p><%=  %></p>
+                </div>
+            </div>
 
-<% @previous.each do |my_event| %>
+        </div>
+        <% end %>
 
-<%= my_event.date %> <br>
-
-<%= my_event.description %> <br>
-
-<% end %>
+    </div>
+</div>

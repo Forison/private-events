@@ -1,5 +1,6 @@
-<%= current_user.name %> 
+<% if logged_in? %>
+<h1 class="text-center title text-capitalize mt-5"> <%= current_user.name %> </h1>
+<% end %>
 
-<h1>Home sweet home</h1>
-<p>welcome home</p>
-
+<h1 class="text-center text-capitalize mt-5">Home sweet home</h1>
+<p class="text-center  text-capitalize mt-2">welcome home</p>

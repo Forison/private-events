@@ -2,13 +2,14 @@
 <div class="space"></div>
 <div class="container ">
     <div class=" shaddow col-xs-10 mx-auto col-sm-6  col-md-4 col-lg-4 signup_wrap">
-        <h1 class="text-center signup">Signup <%= current_user %></h1>
+        <h1 class="text-center signup"><%= current_user.name.upcase %> create event</h1>
         <%= form_for(@event, url: events_path) do |f| %>
-        <%= f.date_field :date %>
+        <%= f.label :date %>
+        <%= f.date_field :date ,class: "form-control" %>
 
-        <%= f.label :description, "description" %> <br>
-        <%= f.text_area :description %> <br>
-        <%= f.submit "create" , class: "btn btn-primary" %> <br>
+        <%= f.label :description, "description"%>
+        <%= f.text_area :description , class: "form-control" %><br>
+        <%= f.submit "create" , class: "btn btn-primary" %>
         <% end %>
 
     </div>
