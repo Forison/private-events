@@ -26,6 +26,7 @@ class EventsController < ApplicationController
     redirect_to users_path(current_user)
   end
 
+
   def show
     @event = Event.all
     @attendance = Attendance.new

@@ -18,5 +18,8 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete 'logout',  to: 'sessions#destroy'
 
+  post 'attendance/invite', to: 'attendances#invite'
+
   post 'attendance/attend', to: 'attendances#attend'
+
 end

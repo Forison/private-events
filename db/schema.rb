@@ -18,7 +18,8 @@ ActiveRecord::Schema.define(version: 2019_08_26_165427) do
     t.datetime "event_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "invitation_accepted"
+    t.boolean "invitation"
+    t.integer "invited_by"
     t.index ["event_id"], name: "index_attendances_on_event_id"
     t.index ["user_id"], name: "index_attendances_on_user_id"
   end
