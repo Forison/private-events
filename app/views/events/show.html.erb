@@ -1,2 +1,105 @@
-<h1>Events#show</h1>
-<p>Find me in app/views/events/show.html.erb</p>
+<main class="d-flex">
+<section>
+                <nav class="m-5 text-center">
+                                <h1>List of upcoming events</h1>
+                        </nav>
+                
+                
+                        <% @event.upcoming(Time.now).each do |event| %>
+                        <div class="rounded events m-5">
+                                <h4>Host:</h4>
+                                <%= User.find(event.user_id).name %> <br>
+                                <h4> Event Description:</h4>
+                                <%= event.description %> <br>
+                                <h4>When is it taking place:</h4>
+                                <%= event.date %> <br>
+                
+                                <!--attend button -->
+                                <% if logged_in? %>
+
+                                <% if current_user.attendances.invited.pluck(:event_id).include?event.id%>
+                                <h4 class="invitation">You have been invited to this event! 
+                                <br>Click the button to confirm you are attending.</h4>
+                                <%= form_for(@attendance , url: attendance_attend_path ) do |f| %>
+                                <%= f.hidden_field :user_id, :value => current_user.id %>
+                                <%= f.hidden_field :event_id, :value => event.id %>
+                                <%= f.submit "attend" , class: "btn btn btn-success" %> <br>
+                                <% end %>
+                                <% end %>
+
+                                <!-- Inviting button | It is only showing the users that are not attending the event still-->
+                                <% if current_user == event.user %>
+                                <h4>Invite someone to your event!</h4>
+                                <%= form_for(@attendance , url: attendance_invite_path ) do |f| %>
+                                <%= f.hidden_field :invited_by, :value => current_user.id %>
+                                <%= f.hidden_field :event_id, :value => event.id %>
+                                <%= f.collection_select :user, User.where(id: User.ids - event.users.pluck(:user_id) - [current_user.id]), :id, :name, include_blank: true %>
+                                <%= f.submit "invite" , class: "btn btn btn-success" %> <br>
+
+                                <% end %>
+                                <% end %>
+                                                      <% end %>
+
+                                
+                
+                                <h4>List of attendees</h4>
+                                <div class="events">
+
+                                <% event.attendances.not_invited.each do |attendances| %>
+                
+                                        <%= User.find(attendances.user_id).name %> <br>
+                
+                                <% end %>
+                        </div>
+
+                
+                
+                        </div>
+                        <% end %>
+                
+
+
+
+
+
+                </section>
+
+        <!-- past events -->
+
+
+
+<section>
+        <nav class="m-5 text-center">
+                <h1>List of past events</h1>
+        </nav>
+
+
+        <% @event.past(Time.now).each do |event| %>
+        <div class="rounded events m-5">
+                <h4>Host:</h4>
+                <%= User.find(event.user_id).name %> <br>
+                <h4> Event Description:</h4>
+                <%= event.description %> <br>
+                <h4>When is it taking place:</h4>
+                <%= event.date %> <br>
+<!-- Warning letters, past event -->
+<h5>You can't join this event. It is already past</h5>
+
+                <h4>List of attendees</h4>
+                <div class="events">
+
+                <% event.attendances.each do |attendances| %>
+
+                        <%= User.find(attendances.user_id).name %> <br>
+
+                <% end %>
+        </div>
+
+
+
+        </div>
+        <% end %>
+
+</section>
+
+</main>

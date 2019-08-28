@@ -1,12 +1,95 @@
-<h1>These are random events </h1>
+<main class="container">
 
-<% @events.each do |event| %>
+    <!-- Header of the section -->
+    <div class="m-5 text-center">
+        <h1>Hi <%= @user.name %> </h1>
 
-<%= event.date %> <br>
+        <p>Here are all your related events.</p>
+    </div>
 
-<%= event.description %> <br>
+    <!-- Second header -->
+    <h2>Events you are hosting</h2>
 
-<%= User.find(event.user_id).name %> <br>
+    <!-- Trying to add a header to the hosted events past/future -->
+    <div class="mb-std row rounded tall-box">
+
+        <div class="col-5 float-left">
+            <h4>Past events</h4>
+            <% @user.events.past(Time.now).each do |event| %>
+            <div class="events mb-bit">
+                <%= event.description %> <br>
+                <%= event.date %>
+            </div>
+            <% end %>
+        </div>
+
+        <div class="col-2"></div>
+
+        <div class="col-5 float-right">
+            <h4>Upcoming events</h4>
+            <% @user.events.upcoming(Time.now).each do |event| %>
+            <div class="events  mb-bit">
+                <%= event.description %> <br>
+                <%= event.date %>
+            </div>
+            <% end %>
+        </div>
+
+    
+    </div>
 
 
-<% end %>
+
+<!-- third header -->
+    <h2> Events you are attending: </h2>
+
+
+    <!-- Attended events -->
+    <div class="mt-std mb-std rounded row tall-box">
+
+        <div class="col-5 float-left">
+                <h4>Past events</h4>
+
+            <% @user.attendances.not_invited.each do |attendance| %>
+            <% if @events.past(Time.now).exists?(attendance.event_id) %>
+            <div class="mb-bit events">
+                <%= @events.past(Time.now).find(attendance.event_id).description %> <br>
+                <%= @events.past(Time.now).find(attendance.event_id).date %> <br>
+
+            </div>
+
+            <%end%>
+
+            <% end %>
+
+        </div>
+
+        <div class="col-2"></div>
+
+        <div class="col-5 float-right">
+                <h4>Upcoming events</h4>
+
+            <% @user.attendances.not_invited.each do |attendance| %>
+            <% if @events.upcoming(Time.now).exists?(attendance.event_id) %>
+
+            <div class="events mb-bit">
+                    <%= @events.upcoming(Time.now).find(attendance.event_id).description %> <br>
+                    <%= @events.upcoming(Time.now).find(attendance.event_id).date %> <br>       
+                     </div>
+
+            <% end %>
+            <% end %>
+
+        </div>
+
+    </div>
+
+
+
+</main>
+
+
+
+<!-- PREVIOUS CODE (Showing all the previous events available in the website)
+     ==> [ It should show ] the events created by the users and the events
+     that the user will be attending.  -->
