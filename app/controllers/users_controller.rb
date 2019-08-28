@@ -15,27 +15,26 @@ class UsersController < ApplicationController
   end
 
   def show
-    #  user = User.find(params[:id])
-     @invite=Attendance.new
+     @invitation=Invite.new
      @user=User.all
      @hosting = current_user.events.all.order(date: :asc)
      @guesting = current_user.attended_events
-    #  @previous=current_user.events.where('date < ?', DateTime.now)
   end
 
   def invite
-    set_invite= Attendance.find(params[:id])
-    if set_invite.send_invite.include?(params[:invite])
-      # params[:invite]=nil
-      flash[:warning]="this person is already invited"
-      redirect_back fallback_location: set_invite
+    if Invite.find_by(event_id: params[:invitation][:event_id], invite: params[:invitation][:invite]).nil?
+     invited= Invite.new(invite_params)
+      if invited.save 
+        flash[:success]="user #{ params[:invitation][:invite] } has been invited to event #{params[:invitation][:event_id]}"
+        redirect_back fallback_location: invited
+      else
+      flash[:warning]="OOps !!! something went wrong"
+      redirect_back fallback_location: invited
+      end
     else
-      set_invite.send_invite << params[:invite]
-      set_invite.save 
-      flash[:success]="invitation successful"
-      # params[:invite]=nil
-      redirect_back fallback_location: set_invite
-    end 
+      flash[:warning]="user #{ params[:invitation][:invite] } are already invited to this event"
+      redirect_back fallback_location: invited
+    end
 
   end
 
@@ -47,6 +46,6 @@ class UsersController < ApplicationController
   end
 
   def invite_params
-    params.require(:invite).permit( :user_id, :event_id, invite: [])
+    params.require(:invitation).permit(:event_id,:invite)
   end
 end

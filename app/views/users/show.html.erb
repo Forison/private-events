@@ -18,38 +18,41 @@
                         <button type="button" class="btn fa-lg" data-toggle="modal" data-target="#myModal">Invite
                             User(s)</button>
                     </div>
+
+                    <div id="myModal" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+
+                            <!-- Modal content -->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Invite User(s)</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <% @user.each do |u|%>
+                                    <span>
+                                        <%= form_for(:invitation, url: { :controller=>'users', :action=>'invite'}) do |f|%>
+                                        <span><%= u.name.upcase %></span>
+                                        <%= f.hidden_field :event_id, :value => my_event.id %>
+                                        <%= f.hidden_field :invite, :value => u.id %>
+                                        <%= f.submit "Invite Me", class: "btn btn-sm btn-primary float-right mb-2 " %>
+                                        <% end %>
+                                    </span>
+                                    <hr>
+                                    <% end %>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
         </div>
         <% end %>
-    </div>
-</div>
-<div id="myModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-
-        <!-- Modal content -->
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Invite User(s)</h4>
-            </div>
-            <div class="modal-body">
-                <% @user.each do |u|%>
-                <span>
-                    <%= form_for(@invite, url: { :controller=>'users', :action=>'invite'}) do |f|%>
-                    <span><%= u.name.upcase %></span>
-                    <%= f.hidden_field :invite, :value => u.id %>
-                    <%= f.submit "Invite Me", class: "btn btn-sm btn-primary float-right mb-2 " %>
-                    <% end %>
-                </span>
-                <hr>
-                <% end %>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-
     </div>
 </div>
 <br>
