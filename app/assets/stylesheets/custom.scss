@@ -1,50 +1,67 @@
 @import "bootstrap";
+@import url('https://fonts.googleapis.com/css?family=Acme|Indie+Flower|Yellowtail&display=swap');
 
 
-body{
-    background:#015228;
-    padding-top:70px;
+body {
+    background:linear-gradient(#6aa372, #67a36e);
+
+    padding-top: 70px;
+    font-family: 'Acme', sans-serif;
 
 }
 
-h1, h2, h3{ color: whitesmoke;}
 
 
 
-.events{
+
+h1,
+h2,
+h3 {
+    color: whitesmoke;
+    font-family: 'Yellowtail', cursive;
+
+}
+
+h5,h4{
+    font-family: 'Indie Flower', cursive;
+
+}
+
+
+
+
+.events {
     background: rgb(158, 199, 130);
     max-height: 100%;
-    
+    box-shadow: 0 0 0 3px rgba(75, 74, 74, 0.2);
+
 
 }
 
-.main-page{
-    background: #015228;
-}
 
 //website boxes
 
-.webox{
+.webox {
     background-image: url(/assets/back.jpg);
 }
 
 // borders
 
-.mb-std{
+.mb-std {
     margin-bottom: 100px;
 }
 
-.mb-bit{
+.mb-bit {
     margin-bottom: 50px;
 }
 
-.mt-std{
+.mt-std {
     margin-top: 5px;
 }
 
 // heights
 
-.tall-box{
+.tall-box {
     height: 20rem;
     max-height: 100%;
     display: table;
@@ -55,14 +72,44 @@ h1, h2, h3{ color: whitesmoke;}
 
 // navigation bar
 
-.nav-eventia{
-
-    background: rgb(233, 233, 233);
-    height: 70px;
-    position: fixed; /* Set the navbar to fixed position */
-    top: 0; /* Position the navbar at the top of the page */
-    width: 100%; /* Full width */
+.nav-eventia {
+    background: linear-gradient(#396b3f, #205927);
+    height: 50px;
+    position: fixed;
+    /* Set the navbar to fixed position */
+    top: 0;
+    /* Position the navbar at the top of the page */
+    width: 100%;
+    /* Full width */
     z-index: 9999;
+    box-shadow: 0 0 0 5px rgba(75, 74, 74, 0.2);
+
 
 }
 
+
+
+.tborder{
+    height: 50px;
+    padding-top: 1%;
+}
+
+.nav-text{
+    color: #6aa372;
+    font-weight: bold;
+}
+
+.nav-text:hover{
+    color:white;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+
+// announcements
+
+.invitation{
+
+    font-weight: bold;
+    color: rgb(221, 114, 114);
+}

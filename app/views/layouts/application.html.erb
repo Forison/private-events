@@ -10,18 +10,18 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
 
-<div class="nav-eventia navbar navbar-dark bg-dark flex-row  d-flex flex-nowrap bd-highlight">
-  <div class="tborder"><%= link_to  "Main", root_path %> <br></div>
+<nav class="nav-eventia navbar flex-row  d-flex flex-nowrap">
+  <div class="tborder"><%= link_to  "Main", root_path, class:"nav-text" %> <br></div>
   <% if !logged_in? %>
-  <div class="tborder"><%= link_to  "Sign up", new_users_path %> <br></div>
-  <div class="tborder"><%= link_to  "Log in", login_path %> <br> </div>
+  <div class="tborder"><%= link_to  "Sign up", new_users_path, class:"nav-text" %> <br></div>
+  <div class="tborder"><%= link_to  "Log in", login_path, class:"nav-text" %> <br> </div>
   <%else%>
-  <div class="tborder"><%= link_to  "Log out", logout_path, method: :delete %> <br> </div>
-  <div class="tborder"><%= link_to  "Create event", events_new_path %> <br> </div>
-  <div class="tborder"><%= link_to  "Your events", users_path(current_user) %> <br> </div>
+  <div class="tborder"><%= link_to  "Log out", logout_path, method: :delete , class:"nav-text" %> <br> </div>
+  <div class="tborder"><%= link_to  "Create event", events_new_path, class:"nav-text" %> <br> </div>
+  <div class="tborder"><%= link_to  "Your events", users_path(current_user), class:"nav-text" %> <br> </div>
   <%end%>
-  <div class="tborder"><%= link_to  "All the events", events_show_path %> <br> </div>
-</div>
+  <div class="tborder"><%= link_to  "All the events", events_show_path, class:"nav-text" %> <br> </div>
+</nav>
 
 
 <body>
@@ -33,6 +33,6 @@
 
 </body>
 
-<%= debug(params) if Rails.env.development? %>
+<!-- <%= debug(params) if Rails.env.development? %> -->
 
 </html>

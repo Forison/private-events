@@ -16,12 +16,12 @@
                 
                                 <!--attend button -->
                                 <% if current_user.attendances.invited.pluck(:event_id).include?event.id %>
-                                <h4>You have been invited to this event! 
+                                <h4 class="invitation">You have been invited to this event! 
                                 <br>Click the button to confirm you are attending.</h4>
                                 <%= form_for(@attendance , url: attendance_attend_path ) do |f| %>
                                 <%= f.hidden_field :user_id, :value => current_user.id %>
                                 <%= f.hidden_field :event_id, :value => event.id %>
-                                <%= f.submit "attend" , class: "btn btn-primary" %> <br>
+                                <%= f.submit "attend" , class: "btn btn btn-success" %> <br>
                                 <% end %>
                                 <% end %>
 
@@ -31,8 +31,8 @@
                                 <%= form_for(@attendance , url: attendance_invite_path ) do |f| %>
                                 <%= f.hidden_field :invited_by, :value => current_user.id %>
                                 <%= f.hidden_field :event_id, :value => event.id %>
-                                <%= f.collection_select :user, User.where(id: User.ids - event.users.pluck(:user_id) ), :id, :name, include_blank: true  %>
-                                <%= f.submit "invite" , class: "btn btn-primary" %> <br>
+                                <%= f.collection_select :user, User.where(id: User.ids - event.users.pluck(:user_id) - [current_user.id]), :id, :name, include_blank: true  %>
+                                <%= f.submit "invite" , class: "btn btn btn-success" %> <br>
 
                                 <% end %>
                                 <% end %>
