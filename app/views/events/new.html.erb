@@ -1,9 +1,9 @@
-<%= provide(:title, "signup")%>
+<%= provide(:title, "create event")%>
 <div class="space"></div>
 <div class="container ">
     <div class=" shaddow col-xs-10 mx-auto col-sm-6  col-md-4 col-lg-4 signup_wrap">
-        <h1 class="text-center signup"><%= current_user.name.upcase %> create event</h1>
-        <%= form_for(@event, url: events_path) do |f| %>
+        <h1 class="text-center signup"><%= current_user.name.capitalize %> create event</h1>
+        <%= form_for(@event, url: events_new_path) do |f| %>
         <%= f.label :date %>
         <%= f.date_field :date ,class: "form-control" %>
 

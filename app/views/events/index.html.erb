@@ -13,19 +13,21 @@
                 <div class="card-body">
                     <p><%= event.description[0..50] %>...</p>
 
-                    <strong>Guest:</strong>
-                    <ul>
-                        <% Event.find(event.id).attendees.uniq.each do |guest| %>
-                        <li><%= guest.name %></li>
-                        <% end %>
-                    </ul>
+                        <div>
+                            <strong>Guest:</strong>
+                            <ul>
+                                <% Event.find(event.id).attendees.uniq.each do |guest| %>
+                                <li><%= guest.name %></li>
+                                <% end %>
+                            </ul>
+                        </div>
 
                 </div>
                 <div class="card-footer d-flex justify-content-between">
                     <p> <strong>Hosted by</strong> : <small><%= event.creator.name %></small> </p>
                     <% if logged_in? %>
                     <div>
-                        <%= form_for(@attendance, url: { :controller=>'events', :action=>'attend_event'}, remote: true) do |f|%>
+                        <%= form_for(:attendance, url: { :controller=>'events', :action=>'attend_event'}, remote: true) do |f|%>
                         <%= f.hidden_field :event_id, :value=> event.id %>
                         <%= f.submit "Attend", class: "btn btn-sm btn-primary float-right mb-2 " %>
                         <% end %>

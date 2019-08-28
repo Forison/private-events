@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  
+
   def index
     @attendance = Attendance.new
     @upcoming_events = Event.upcoming
@@ -23,7 +23,7 @@ class EventsController < ApplicationController
     @event = current_user.events.build(event_params)
     if @event.save
       flash[:success] = "Event created successfully!"
-      redirect_to root_path
+      redirect_to users_show_url
     else
       render 'new'
     end
