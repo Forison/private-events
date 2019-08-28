@@ -1,5 +1,5 @@
-<main>
-
+<main class="d-flex">
+<section>
                 <nav class="m-5 text-center">
                                 <h1>List of upcoming events</h1>
                         </nav>
@@ -15,7 +15,9 @@
                                 <%= event.date %> <br>
                 
                                 <!--attend button -->
-                                <% if current_user.attendances.invited.pluck(:event_id).include?event.id %>
+                                <% if logged_in? %>
+
+                                <% if current_user.attendances.invited.pluck(:event_id).include?event.id%>
                                 <h4 class="invitation">You have been invited to this event! 
                                 <br>Click the button to confirm you are attending.</h4>
                                 <%= form_for(@attendance , url: attendance_attend_path ) do |f| %>
@@ -31,12 +33,13 @@
                                 <%= form_for(@attendance , url: attendance_invite_path ) do |f| %>
                                 <%= f.hidden_field :invited_by, :value => current_user.id %>
                                 <%= f.hidden_field :event_id, :value => event.id %>
-                                <%= f.collection_select :user, User.where(id: User.ids - event.users.pluck(:user_id) - [current_user.id]), :id, :name, include_blank: true  %>
+                                <%= f.collection_select :user, User.where(id: User.ids - event.users.pluck(:user_id) - [current_user.id]), :id, :name, include_blank: true %>
                                 <%= f.submit "invite" , class: "btn btn btn-success" %> <br>
 
                                 <% end %>
                                 <% end %>
-                      
+                                                      <% end %>
+
                                 
                 
                                 <h4>List of attendees</h4>
@@ -59,13 +62,13 @@
 
 
 
-
+                </section>
 
         <!-- past events -->
 
 
 
-
+<section>
         <nav class="m-5 text-center">
                 <h1>List of past events</h1>
         </nav>
@@ -96,5 +99,7 @@
 
         </div>
         <% end %>
+
+</section>
 
 </main>
