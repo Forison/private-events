@@ -1,2 +1,12 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1>These are random events </h1>
+
+<% @events.each do |event| %>
+
+<%= event.date %> <br>
+
+<%= event.description %> <br>
+
+<%= User.find(event.user_id).name %> <br>
+
+
+<% end %>
