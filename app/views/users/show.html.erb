@@ -12,21 +12,19 @@
                 <div class="card-body">
                     <p><%= my_event.description[0..50] %>...</p>
 
-                    <strong>Invited:</strong>
-                    <ul>
-                        <li><%= Event.find(my_event.id).invites.count %></li>
-                    </ul>
+                    <strong>Total Invites :</strong> <small><%= my_event.invites.count %></small>
 
                 </div>
 
                 <div class="card-footer">
                     <!--end-main-container-->
                     <div class="talkbubble-wrap">
-                        <button type="button" class="btn fa-lg" data-toggle="modal" data-target="#myModal">Invite
-                            User(s)</button>
+                        <button type="button" class="btn fa-lg" data-toggle="modal"
+                            data-target="#myModal-<%=my_event.id%>">Invite
+                            User(s)<%= my_event.id %></button>
                     </div>
 
-                    <div id="myModal" class="modal fade" role="dialog">
+                    <div id="myModal-<%=my_event.id%>" class="modal fade" role="dialog">
                         <div class="modal-dialog">
 
                             <!-- Modal content -->
