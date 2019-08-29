@@ -27,6 +27,7 @@ class AttendancesController < ApplicationController
 
 
   def invite
+    
     @attendance = Attendance.new
     @user = User.find(params[:attendance][:user])
     @attendance.user_id =  params[:attendance][:user] 
