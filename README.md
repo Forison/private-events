@@ -5,7 +5,7 @@ This project is designed to mimic the logic behind [Eventbrite](https://www.http
 The project is part of a series of projects to be completed by students of [Microverse](https://www.microverse.org/ "The Global School for Remote Software Developers!").
 
 
-![Alt Text](https://im4.ezgif.com/tmp/ezgif-4-723f1e6249f9.gif)
+![eventia](https://user-images.githubusercontent.com/34820784/63966657-04750e80-ca9c-11e9-9f20-a8f3e4bbf658.gif)
 
 
 ## Technologies
