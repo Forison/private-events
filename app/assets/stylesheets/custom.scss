@@ -4,15 +4,9 @@
 
 body {
     background:linear-gradient(#6aa372, #67a36e);
-
-    padding-top: 70px;
+    margin-top: 60px;
     font-family: 'Acme', sans-serif;
-
 }
-
-
-
-
 
 h1,
 h2,
@@ -31,9 +25,6 @@ h4{
     background: linear-gradient(#396b3f, #205927);
     color: #76a17b;
 }
-
-
-
 
 .events {
     background: rgb(158, 199, 130);
@@ -181,4 +172,9 @@ input[type=text], select {
   .font-nav{
     color: #76a17b;
     font-weight: bold;
+  }
+  //addo
+.wrap{
+      width: 100%;
+      border: 1px solid #396b3f;
   }

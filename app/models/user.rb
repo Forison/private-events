@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class User < ApplicationRecord
   scope :not_invited_this_event, ->(ids) { where("User_id in ARRAY[?]::integer[]", ids) }
 

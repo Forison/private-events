@@ -1,90 +1,78 @@
 <main class="container">
-
     <!-- Header of the section -->
     <div class="m-5 text-center">
         <h1>Hi <%= @user.name %> </h1>
 
         <p>Here are all your related events.</p>
     </div>
-
     <!-- Second header -->
     <h2>Events you are hosting</h2>
+    <div class="row">
 
-    <!-- Trying to add a header to the hosted events past/future -->
-    <div class="mb-std row rounded tall-box">
-
-        <div class="col-5 float-left">
-            <h4>Past events</h4>
-            <% @user.events.past(Time.now).each do |event| %>
-            <div class="events mb-bit">
-                <%= event.description %> <br>
-                <%= event.date %>
+        <div class="col-lg-6">
+            <div class="wrap">
+                <h4>Upcoming events</h4>
+                <% @user.events.upcoming(Time.now).each do |event| %>
+                <div class="events mb-4">
+                    <p><%= event.description %></p>
+                    <small class="float-right"><%= time_ago_in_words(event.date) %> from now </small>
+                </div>
+                <% end %>
             </div>
-            <% end %>
         </div>
 
-        <div class="col-2"></div>
+        <div class="col-lg-6">
+            <div class="wrap">
+                <h4>Past events</h4>
+                <% @user.events.past(Time.now).each do |event| %>
+                <div class="events mb-3">
+                    <p><%= event.description %> </p>
+                    <small class="float-right"><%= time_ago_in_words(event.date) %> ago</small>
+                </div>
+                <% end %>
 
-        <div class="col-5 float-right">
-            <h4>Upcoming events</h4>
-            <% @user.events.upcoming(Time.now).each do |event| %>
-            <div class="events  mb-bit">
-                <%= event.description %> <br>
-                <%= event.date %>
             </div>
-            <% end %>
         </div>
-
-    
     </div>
 
-
-
-<!-- third header -->
+    <!-- third header -->
     <h2> Events you are attending: </h2>
 
+    <div class="row">
 
-    <!-- Attended events -->
-    <div class="mt-std mb-std rounded row tall-box">
-
-        <div class="col-5 float-left">
+        <div class="col-lg-6">
+            <div class="wrap">
                 <h4>Past events</h4>
 
-            <% @user.attendances.not_invited.each do |attendance| %>
-            <% if @events.past(Time.now).exists?(attendance.event_id) %>
-            <div class="mb-bit events">
-                <%= @events.past(Time.now).find(attendance.event_id).description %> <br>
-                <%= @events.past(Time.now).find(attendance.event_id).date %> <br>
+                <% @user.attendances.not_invited.each do |attendance| %>
+                <% if @events.past(Time.now).exists?(attendance.event_id) %>
+                <div class="mb-bit events">
+                    <%= @events.past(Time.now).find(attendance.event_id).description %> <br>
+                    <%= @events.past(Time.now).find(attendance.event_id).date %> <br>
 
+                </div>
+
+                <%end%>
+
+                <% end %>
             </div>
-
-            <%end%>
-
-            <% end %>
-
         </div>
-
-        <div class="col-2"></div>
-
-        <div class="col-5 float-right">
+        <div class="col-lg-6">
+            <div class="wrap">
                 <h4>Upcoming events</h4>
 
-            <% @user.attendances.not_invited.each do |attendance| %>
-            <% if @events.upcoming(Time.now).exists?(attendance.event_id) %>
+                <% @user.attendances.not_invited.each do |attendance| %>
+                <% if @events.upcoming(Time.now).exists?(attendance.event_id) %>
 
-            <div class="events mb-bit">
+                <div class="events mb-bit">
                     <%= @events.upcoming(Time.now).find(attendance.event_id).description %> <br>
-                    <%= @events.upcoming(Time.now).find(attendance.event_id).date %> <br>       
-                     </div>
+                    <%= @events.upcoming(Time.now).find(attendance.event_id).date %> <br>
+                </div>
 
-            <% end %>
-            <% end %>
-
+                <% end %>
+                <% end %>
+            </div>
         </div>
-
-    </div>
-
-
 
 </main>
 
