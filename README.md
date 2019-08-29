@@ -38,7 +38,7 @@ $ cd Private-events
 - attend event if logged in and invited
 ## Designed and developed by
 
-[Boakye Addo Forison](https://github.com/Forison)
+[Boakye Addo Forison](https://github.com/Forison) &&
 [Samuel Garcia Companys](https://github.com/samgaco)
 
 ## Contributing
