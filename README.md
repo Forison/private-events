@@ -1,8 +1,12 @@
 # Associations With Rails
 
 A practical demonstration and implementation of association with rails.
-This project is designed to mimic the logic behind in [Eventbrite](https://www.https://www.eventbrite.com//).
+This project is designed to mimic the logic behind [Eventbrite](https://www.https://www.eventbrite.com//).
 The project is part of a series of projects to be completed by students of [Microverse](https://www.microverse.org/ "The Global School for Remote Software Developers!").
+
+
+![eventia](https://user-images.githubusercontent.com/34820784/63966657-04750e80-ca9c-11e9-9f20-a8f3e4bbf658.gif)
+
 
 ## Technologies
 
@@ -30,15 +34,16 @@ $ cd Private-events
 
 ## Functionalities
 
-- create an account
-- login with name
-- create a events
-- invite users to your event
-- users accept invation to event
-- attend event if logged in and invited
+- Create an account
+- Login with an email
+- Create an events
+- Invite users to the events you are hosting
+- Accept invitations by pushing the "attend" button
+- Check your upcoming and past events divided in two categories, the ones you are attending and those you are hosting.
+
 ## Designed and developed by
 
-[Boakye Addo Forison](https://github.com/Forison)
+[Boakye Addo Forison](https://github.com/Forison) &&
 [Samuel Garcia Companys](https://github.com/samgaco)
 
 ## Contributing
