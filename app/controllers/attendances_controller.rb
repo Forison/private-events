@@ -8,11 +8,15 @@ class AttendancesController < ApplicationController
 
   def attend
     @user = User.find(params[:attendance][:user_id])
+    invitedby = @user.attendances.find_by(event_id: params[:attendance][:event_id]).invited_by
     @user.attendances.delete(@user.attendances.find_by(event_id: params[:attendance][:event_id]).id)
     @attendance = Attendance.new
     @event = Event.find(params[:attendance][:event_id])
     @attendance.user_id =  params[:attendance][:user_id] 
     @attendance.event_id = params[:attendance][:event_id]
+    @attendance.invitation = nil  
+    @attendance.invited_by = invitedby
+  
     
     
 
