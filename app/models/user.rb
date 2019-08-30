@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   scope :not_invited_this_event, ->(ids) { where("User_id in ARRAY[?]::integer[]", ids) }
+  scope :user_upcoming_event, ->{ Event.where("date > ?", DateTime.now) }
+  scope :user_past_event, ->{ Event.where("date < ?", DateTime.now) }
 
   before_save { self.email = email.downcase }
   validates :name,  presence: true, length: { maximum: 50 }

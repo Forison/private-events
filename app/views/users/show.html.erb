@@ -12,7 +12,7 @@
         <div class="col-lg-6">
             <div class="wrap">
                 <h4>Upcoming events</h4>
-                <% @user.events.upcoming(Time.now).each do |event| %>
+                <% @user_upcoming_event.each do |event| %>
                 <div class="events mb-4">
                     <p><%= event.description %></p>
                     <small class="float-right"><%= time_ago_in_words(event.date) %> from now </small>
@@ -24,7 +24,7 @@
         <div class="col-lg-6">
             <div class="wrap">
                 <h4>Past events</h4>
-                <% @user.events.past(Time.now).each do |event| %>
+                <% @user_past_event.each do |event| %>
                 <div class="events mb-3">
                     <p><%= event.description %> </p>
                     <small class="float-right"><%= time_ago_in_words(event.date) %> ago</small>

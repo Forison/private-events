@@ -1,16 +1,13 @@
 <main>
-<nav>
-    <h1 class="m-5">List of available events</h1>
-</nav>
-        
-        
+  <h1 class="m-5">List of available events</h1>
+
   <div class="m-5 border border-success events">
     <%= @event.description %> <br>
     <% @event.attendances.each do |attendances| %>
-  <div class="border">
-        <%= User.find(attendances.user_id).name %> <br>
-      </div>
+    <div class="border">
+      <%= User.find(attendances.user_id).name %> <br>
+    </div>
     <% end %>
-      </div>
-</main>
+  </div>
 
+</main>
