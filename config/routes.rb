@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   post 'events/new', to: 'events#create'
   get 'events/show', to: 'events#show'
-  get 'events/:id', to: 'events#index'
+  get 'events/:id', to: 'events#show', as: :event
 
   get 'users/:id', to: 'users#show'
 
@@ -16,10 +16,9 @@ Rails.application.routes.draw do
 
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
-  delete 'logout',  to: 'sessions#destroy'
+  delete 'logout', to: 'sessions#destroy'
 
   post 'attendance/invite', to: 'attendances#invite'
 
   post 'attendance/attend', to: 'attendances#attend'
-
 end

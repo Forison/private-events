@@ -2,8 +2,10 @@
 
 class EventsController < ApplicationController
   def index
-    @events = Event.order(created: :desc)
-
+    @event = Event.all
+    @upcoming_event = Event.upcoming
+    @past_event = Event.past
+    @attendance = Attendance.new
   end
 
   def new
@@ -11,12 +13,17 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = current_user.events.build(event_params)
-    if @event.save
-      flash[:success] = 'Event created successfully!'
+    if params[:get] == nil 
+      @event = current_user.events.build(event_params) 
+      if @event.save
+        flash[:success] = 'Event created successfully!'
+        redirect_to root_path
+      else
+        render 'new'
+      end
+    else  
+      flash.now[:success] = "going to the event"
       redirect_to root_path
-    else
-      render 'new'
     end
   end
 
@@ -26,7 +33,6 @@ class EventsController < ApplicationController
     flash[:success] = 'You have joined the event!'
     redirect_to users_path(current_user)
   end
-
 
   def show
     @event = Event.all

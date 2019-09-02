@@ -1,5 +1,28 @@
 <main class="container">
 
+
+        <div class="row">
+
+
+                <div class="col-lg-2"></div>
+                <div class="col-lg-4">
+                        <h1>List of events</h1> <br>
+                </div>
+                <div class="col-lg-6"></div>
+
+
+                <div class="col-lg-2"></div>
+                <div class="col-lg-8">
+
+                        <%= form_tag event_path(@event.ids) do |event|%>
+                        <%= collection_select(:get, :event, Event.all, :id, :description, prompt: true ) %>
+                        <%= submit_tag "go to this event" , class: "btn btn btn-success" %> <br>
+                        <%end%>
+                </div>
+        </div>
+
+
+        </div>
         <div class="row">
 
                 <div class="col-lg-6">

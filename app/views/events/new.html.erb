@@ -7,6 +7,7 @@
             <div class="m-5">
         <%= form_for(@event, url: events_new_path) do |f| %>
 
+
         <%= f.label :description, "Add a description of the event" , class: "font-nav" %> <br>
         <%= f.text_area :description ,class: "css-form" %> <br>
         <%= f.label :date, "Date of the event", class: "font-nav" %> <br>
