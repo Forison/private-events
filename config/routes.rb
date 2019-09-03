@@ -14,5 +14,5 @@ Rails.application.routes.draw do
 
   post 'attendance/invite', to: 'attendances#invite'
 
-  post 'attendance/attend', to: 'attendances#attend'
+  post 'events/attend', to: 'attendances#attend'
 end
