@@ -1,39 +1,101 @@
 <main class="container">
     <!-- Header of the section -->
-    <div class="m-5 text-center">
+    <div class="mt-5 text-center">
         <h1>Hi <%= @user.name %> </h1>
 
         <p>Here are all your related events.</p>
     </div>
     <!-- Second header -->
-    <h2>Events you are hosting</h2>
+    <h2 class="text-center">Events you are hosting</h2>
     <div class="row">
 
         <div class="col-lg-6">
-            <div class="wrap">
-                <h4>Upcoming events</h4>
-                <% @user_upcoming_event.each do |event| %>
-                <div class="events mb-4">
-                    <p><%= event.description %></p>
-                    <small class="float-right"><%= time_ago_in_words(event.date) %> from now </small>
-                </div>
+            <h1 class="text-center">List of upcoming events</h1>
+            <% @user_upcoming_event.each do |event| %>
+            <div class="rounded events m-5">
+                <h4>Host: <small><%= User.find(event.user_id).name %></small></h4>
+                <h4> Event Description:</h4>
+                <p><%= event.description %></p>
+                <h4>When is it taking place: <small><%= time_ago_in_words(event.date) %> from
+                        today</small> </h4>
+
+
+                <!--attend button -->
+                <% if logged_in? %>
+
+                <% if current_user.attendances.invited.pluck(:event_id).include?event.id%>
+                <h4 class="invitation">You have been invited to this event!
+                    <br>Click the button to confirm you are attending.</h4>
+                <%= form_for(@attendance , url: attendance_attend_path ) do |f| %>
+                <%= f.hidden_field :user_id, :value => current_user.id %>
+                <%= f.hidden_field :event_id, :value => event.id %>
+                <%= f.submit "attend" , class: "btn btn btn-success" %> <br>
                 <% end %>
+                <% end %>
+
+                <!-- Inviting button | It is only showing the users that are not attending the event still-->
+                <% if current_user == event.user %>
+                <h4>Invite someone to your event!</h4>
+                <%= form_for(@attendance , url: attendance_invite_path ) do |f| %>
+                <%= f.hidden_field :invited_by, :value => current_user.id %>
+                <%= f.hidden_field :event_id, :value => event.id %>
+                <%= f.collection_select :user, User.where(id: User.ids - event.users.pluck(:user_id) - [current_user.id]), :id, :name, required: true %>
+                <%= f.submit "invite" , class: "btn btn btn-success" %> <br>
+
+                <% end %>
+                <% end %>
+                <% end %>
+
+
+
+                <h4>List of attendees</h4>
+                <div class="events">
+
+                    <% event.attendances.not_invited.each do |attendances| %>
+
+                    <%= User.find(attendances.user_id).name %> <br>
+
+                    <% end %>
+                </div>
+
+
+
             </div>
+            <% end %>
+
         </div>
 
         <div class="col-lg-6">
-            <div class="wrap">
-                <h4>Past events</h4>
-                <% @user_past_event.each do |event| %>
-                <div class="events mb-3">
-                    <p><%= event.description %> </p>
-                    <small class="float-right"><%= time_ago_in_words(event.date) %> ago</small>
+            <h1 class="text-center">List of past events</h1>
+            <% @user_past_event.each do |event| %>
+            <div class="rounded events m-5">
+                <h4>Host: <small><%= User.find(event.user_id).name %></small></h4>
+
+                <h4> Event Description:</h4>
+                <p><%= event.description %></p>
+                <h4>When is it taking place:<small><%= time_ago_in_words(event.date) %> ago </small>
+                </h4>
+                <!-- Warning letters, past event -->
+                <h5>You can't join this event. It is already past</h5>
+
+                <h4>List of attendees</h4>
+                <div class="events">
+
+                    <% event.attendances.each do |attendances| %>
+
+                    <%= User.find(attendances.user_id).name %> <br>
+
+                    <% end %>
                 </div>
-                <% end %>
+
+
 
             </div>
+            <% end %>
+
         </div>
     </div>
+
 
     <!-- third header -->
     <h2> Events you are attending: </h2>
@@ -75,8 +137,6 @@
         </div>
 
 </main>
-
-
 
 <!-- PREVIOUS CODE (Showing all the previous events available in the website)
      ==> [ It should show ] the events created by the users and the events

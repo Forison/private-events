@@ -1,14 +1,8 @@
-# frozen_string_literal: true
-
 Rails.application.routes.draw do
   get 'attendance/new'
   resource :users
   resource :sessions
-  resource :events
-
-  post 'events/new', to: 'events#create'
-  get 'events/show', to: 'events#show'
-  get 'events/:id', to: 'events#show', as: :event
+  resources :events
 
   get 'users/:id', to: 'users#show'
 

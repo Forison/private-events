@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class EventsController < ApplicationController
   def index
     @event = Event.all
@@ -35,19 +33,13 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.all
-    @upcoming_event = Event.upcoming
-    @past_event = Event.past
-    @attendance = Attendance.new
-  end
-
-  def index
     @event = Event.find(params[:id])
   end
+
 
   private
 
   def event_params
-    params.require(:event).permit(:user_id, :description, :date)
+    params.require(:event).permit(:user_id, :event_title, :description, :date)
   end
 end

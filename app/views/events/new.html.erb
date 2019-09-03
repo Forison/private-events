@@ -1,23 +1,24 @@
-<main><%= provide(:title, "signup")%> 
-<div class="space"></div>
-<div class="m-5 container">
-    <div class=" shaddow col-xs-10 mx-auto col-sm-6  col-md-4 col-lg-4 signup_wrap">
-        <h5 class="text-center signup font-nav">Create a new event <%= current_user.name %></h1>
+<main><%= provide(:title, "signup")%>
+    <div class="space"></div>
+    <div class="m-5 container">
+        <div class=" shaddow col-xs-10 mx-auto col-sm-6  col-md-4 col-lg-4 signup_wrap">
+            <h5 class="text-center signup font-nav">Create a new event <%= current_user.name %></h1>
 
-            <div class="m-5">
-        <%= form_for(@event, url: events_new_path) do |f| %>
+                <div class="m-5">
+                    <%= form_for(@event, url: events_path) do |f| %>
 
 
-        <%= f.label :description, "Add a description of the event" , class: "font-nav" %> <br>
-        <%= f.text_area :description ,class: "css-form" %> <br>
-        <%= f.label :date, "Date of the event", class: "font-nav" %> <br>
-        <%= f.date_field :date, class:"css-form" %> <br>
-        <%= f.submit "create" , class: "btn btn btn-success" %> <br>
-        <% end %>
+                    <%= f.label :description, "Add a description of the event" , class: "font-nav" %> <br>
+                    <%= f.text_field :event_title, placeholder: "title" ,class: "css-form" %> <br>
+                    <%= f.text_area :description,placeholder: 'event description' ,class: "css-form" %> <br>
+                    <%= f.label :date, "Date of the event", class: "font-nav" %> <br>
+                    <%= f.date_field :date, class:"css-form" %> <br>
+                    <%= f.submit "create" , class: "btn btn btn-success" %> <br>
+                    <% end %>
+
+                </div>
+
+        </div>
 
     </div>
-
-    </div>
-
-</div>
 </main>

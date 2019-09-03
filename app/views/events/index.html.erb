@@ -1,13 +1,43 @@
-<main>
-  <h1 class="m-5">Event</h1>
+<main class="container">
+    <h1 class="text-center m-5">All Events</h1>
+    <h1>Upcoming</h1>
+    <div class="row">
 
-  <div class="m-5 border border-success events">
-    <%= @event.description %> <br>
-    <% @event.attendances.each do |attendances| %>
-    <div class="border">
-      <%= User.find(attendances.user_id).name %> <br>
+        <% @upcoming_event.each do |event| %>
+        <div class="col-lg-4">
+            <a href="<%= event_path(event.id) %>" style="text-decoration: none">
+                <div class="  border border-success events">
+                    <div class="border">
+                        <h3 class="text-center text-capitalize"><%= event.event_title %></h3>
+                        <p><%= event.description[0..80] %></p>
+                        <h4>When is it taking place: <small><%= time_ago_in_words(event.date) %> from
+                                today</small> </h4>
+                    </div>
+                    <strong>hosted by: </strong><small><%= User.find(event.user_id).name %></small>
+                    <br>
+                </div>
+            </a>
+        </div>
+        <% end %>
     </div>
-    <% end %>
-  </div>
+    <hr>
+    <h1>Past</h1>
+    <div class="row">
 
+        <% @past_event.each do |event| %>
+        <div class="col-lg-4">
+            <a href="<%= event_path(event.id) %>" style="text-decoration: none">
+                <div class="  border border-success events">
+                    <div class="border">
+                        <p><%= event.description[0..80] %></p>
+                        <h4>When is it taking place: <small><%= time_ago_in_words(event.date) %> ago</small> </h4>
+                    </div>
+                    <strong>hosted by: </strong><small><%= User.find(event.user_id).name %></small>
+                    <br>
+                </div>
+            </a>
+        </div>
+        <% end %>
+    </div>
+    </div>
 </main>
