@@ -17,7 +17,8 @@
                     <br>
             </a>
 
-            <% if current_user.attendances.invited.pluck(:event_id).include?event.id%>
+            <% if logged_in? %>
+            <% if current_user.attendances.invited.pluck(:event_id).include?event.id %>
 
             <h4 class="invitation2">You have been invited to this event!
                    <br>Click the button to confirm you are attending.</h4>
@@ -29,6 +30,8 @@
                     <% end %>
 
             <% end %>
+            <% end %>
+
         </div>
 
         </div>
