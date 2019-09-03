@@ -20,6 +20,7 @@
                         </ul>
                         <% end %>
                 </div>
+                <% if logged_in? %>
 
                 <% if current_user.attendances.invited.pluck(:event_id).include?@event.id%>
 
@@ -33,6 +34,8 @@
                         <% end %>
 
                 <% end %>
+                <% end %>
+
 
         </div>
 </main>
