@@ -43,17 +43,14 @@ RSpec.describe User, type: :model do
     end
   end
 
-  context 'When creating a new event' do
-    it 'increases the number of events associated to an user by one unit' do
+    it 'is associated to events (has many of them)' do
       us = User.reflect_on_association(:events)
       expect(us.macro).to eq(:has_many)
     end
-  end
 
-  context 'When creating new attendances' do
-    it 'increases the number of attendances associated to the user by one unit' do
+    it 'is associated to attendances (has many of them)' do
       us = User.reflect_on_association(:attendances)
       expect(us.macro).to eq(:has_many)
     end
-  end
+  
 end

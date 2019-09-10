@@ -19,6 +19,9 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'rspec-rails', '~> 3.5'
   gem 'sqlite3'
+  gem 'shoulda', '~> 3.5'
+  gem 'shoulda-matchers'
+
 end
 
 group :production do
