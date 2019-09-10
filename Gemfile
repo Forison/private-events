@@ -14,10 +14,10 @@ gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 
 group :development, :test do
   gem 'byebug', platform: :mri
-  gem 'rspec-rails', '~> 3.5'
-  gem "factory_bot_rails"
   gem 'coderay', '~> 1.1', '>= 1.1.2'
   gem 'database_cleaner'
+  gem 'factory_bot_rails'
+  gem 'rspec-rails', '~> 3.5'
   gem 'sqlite3'
 end
 

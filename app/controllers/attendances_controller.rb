@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AttendancesController < ApplicationController
   def new
     @attendance = Attendance.new
@@ -9,7 +11,7 @@ class AttendancesController < ApplicationController
     @user.attendances.delete(@user.attendances.find_by(event_id: params[:attendance][:event_id]).id)
     @attendance = Attendance.new
     @event = Event.find(params[:attendance][:event_id])
-    @attendance.user_id =  params[:attendance][:user_id]
+    @attendance.user_id = params[:attendance][:user_id]
     @attendance.event_id = params[:attendance][:event_id]
     @attendance.invitation = nil
     @attendance.invited_by = invitedby
@@ -26,7 +28,7 @@ class AttendancesController < ApplicationController
   def invite
     @attendance = Attendance.new
     @user = User.find(params[:attendance][:user])
-    @attendance.user_id =  params[:attendance][:user]
+    @attendance.user_id = params[:attendance][:user]
     @attendance.event_id = params[:attendance][:event_id]
     @attendance.invitation = true
     @attendance.invited_by = params[:attendance][:invited_by]

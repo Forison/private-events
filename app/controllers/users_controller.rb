@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   def new
     @user = User.new
@@ -19,7 +21,7 @@ class UsersController < ApplicationController
     @events = Event.all
     @user_upcoming_event = current_user.events.where('date > ?', DateTime.now)
     @user_past_event = current_user.events.where('date < ?', DateTime.now)
-    @attendance=Attendance.new
+    @attendance = Attendance.new
   end
 
   private

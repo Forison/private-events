@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class EventsController < ApplicationController
   def index
     @event = Event.all
@@ -13,16 +15,16 @@ class EventsController < ApplicationController
   end
 
   def create
-    if params[:get] == nil 
-      @event = current_user.events.build(event_params) 
+    if params[:get].nil?
+      @event = current_user.events.build(event_params)
       if @event.save
         flash[:success] = 'Event created successfully!'
         redirect_to root_path
       else
         render 'new'
       end
-    else  
-      flash.now[:success] = "going to the event"
+    else
+      flash.now[:success] = 'going to the event'
       redirect_to root_path
     end
   end
@@ -46,7 +48,7 @@ class EventsController < ApplicationController
     @user.attendances.delete(@user.attendances.find_by(event_id: params[:attendance][:event_id]).id)
     @attendance = Attendance.new
     @event = Event.find(params[:attendance][:event_id])
-    @attendance.user_id =  params[:attendance][:user_id]
+    @attendance.user_id = params[:attendance][:user_id]
     @attendance.event_id = params[:attendance][:event_id]
     @attendance.invitation = nil
     @attendance.invited_by = invitedby
