@@ -11,9 +11,16 @@ gem 'rails', '~> 5.2.3'
 gem 'font-awesome-rails'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 # Use sqlite3 as the database for Active Record
-group :development do
+
+group :development, :test do
+  gem 'byebug', platform: :mri
+  gem 'rspec-rails', '~> 3.5'
+  gem "factory_bot_rails"
+  gem 'coderay', '~> 1.1', '>= 1.1.2'
+  gem 'database_cleaner'
   gem 'sqlite3'
 end
+
 group :production do
   gem 'pg'
 end
