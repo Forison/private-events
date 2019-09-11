@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get 'attendance/new'
-  resource :users
+  resource :users, only: [:new, :create, :show ]
   resource :sessions
   resources :events
 

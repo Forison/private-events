@@ -7,7 +7,7 @@
         <%= form_for(:session , url: login_path ) do |f| %>
         <%= f.label :email , class: "font-nav"%> <br>
         <%= f.text_field :email, class: 'form-control' %> <br>
-        <%= f.submit "login"%>
+        <%= f.submit "login" %>
         <p class="note font-nav">not yet a member? <%= link_to "sign up", new_users_path %> </p>
         <% end %>
 

@@ -51,6 +51,11 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'letter_opener'
 group :development, :test do
+  gem 'rspec-rails', '~> 3.5'
+  gem 'factory_bot_rails'
+  gem 'capybara', '>= 2.15'
+  gem 'database_cleaner'
+  
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
 end
@@ -66,6 +71,9 @@ end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
+  gem 'shoulda', '~> 3.5'
+  gem 'rails-controller-testing'
+  gem 'shoulda-matchers', '~> 2.0'
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome

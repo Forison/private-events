@@ -13,12 +13,12 @@
 <nav class="nav-eventia navbar flex-row  d-flex flex-nowrap">
   <div class="tborder"><%= link_to  "Main", root_path, class:"nav-text" %> <br></div>
   <% if !logged_in? %>
-  <div class="tborder"><%= link_to  "All the events", events_path, class:"nav-text" %> <br> </div> 
+  <div class="tborder"><%= link_to  "All the events", events_path, class:"nav-text" %> <br> </div>
   <div class="tborder"><%= link_to  "Sign up", new_users_path, class:"nav-text" %> <br></div>
   <div class="tborder"><%= link_to  "Log in", login_path, class:"nav-text" %> <br> </div>
   <%else%>
   <div class="tborder"><%= link_to  "Create event", new_event_path, class:"nav-text" %> <br> </div>
-  <div class="tborder"><%= link_to  "All the events", events_path, class:"nav-text" %> <br> </div> 
+  <div class="tborder"><%= link_to  "All the events", events_path, class:"nav-text" %> <br> </div>
   <div class="tborder"><%= link_to  "Your events", users_path(current_user), class:"nav-text" %> <br> </div>
   <div class="tborder"><%= link_to  "Log out", logout_path, method: :delete , class:"nav-text" %> <br> </div>
   <%end%>

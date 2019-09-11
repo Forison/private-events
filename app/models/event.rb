@@ -6,7 +6,8 @@ class Event < ApplicationRecord
   belongs_to :user
 
   validates :date, presence: true
-  validates :description, presence: true, length: { minimum: 10 }
+  validates :event_title, presence: true
+  validates :description, presence: true, length: { minimum: 20 }
   scope :past, -> { where('date < ?', DateTime.now).order(date: :asc) }
   scope :upcoming, -> { where('date > ?', DateTime.now).order(date: :desc) }
 end

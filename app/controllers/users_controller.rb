@@ -10,6 +10,7 @@ class UsersController < ApplicationController
       redirect_to root_path
       log_in @user
     else
+      flash.now[:danger] = 'oops something went wrong'
       render 'new'
     end
   end

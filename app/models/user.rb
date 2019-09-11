@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class User < ApplicationRecord
   scope :not_invited_this_event, ->(ids) { where('User_id in ARRAY[?]::integer[]', ids) }
   scope :user_upcoming_event, -> { Event.where('date > ?', DateTime.now) }
@@ -11,7 +9,8 @@ class User < ApplicationRecord
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
-  validates :password, presence: true, length: { minimum: 2 }
+  validates :password, presence: true, length: { minimum: 8 }
+  validates :password_confirmation, presence: true, length: { minimum: 8 }
 
   has_many :attendances
   has_many :events, through: :attendances

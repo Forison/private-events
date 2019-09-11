@@ -29,7 +29,7 @@
                 <%= form_for(@attendance , url: attendance_attend_path ) do |f| %>
                 <%= f.hidden_field :user_id, :value => current_user.id %>
                 <%= f.hidden_field :event_id, :value => event.id %>
-                <%= f.submit "attend" , class: "btn btn btn-success" %> <br>
+                <%= f.submit "attend" , class: "btn btn-success" %> <br>
                 <% end %>
                 <% end %>
 

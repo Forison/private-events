@@ -27,12 +27,12 @@ class EventsController < ApplicationController
     end
   end
 
-  def attend
-    @event = Event.find(params[:event_id])
-    current_user.attendances << @event
-    flash[:success] = 'You have joined the event!'
-    redirect_to users_path(current_user)
-  end
+  # def attend
+  #   @event = Event.find(params[:event_id])
+  #   current_user.attendances << @event
+  #   flash[:success] = 'You have joined the event!'
+  #   redirect_to users_path(current_user)
+  # end
 
   def show
     @event = Event.find(params[:id])
