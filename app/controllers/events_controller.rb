@@ -19,11 +19,14 @@ class EventsController < ApplicationController
         flash[:success] = 'Event created successfully!'
         redirect_to root_path
       else
+
+          flash.now[:danger] =   @event.errors.full_messages.join('-').split("-")
+
         render 'new'
       end
     else  
-      flash.now[:success] = "going to the event"
-      redirect_to root_path
+      flash[:success] = "going to the event"
+       redirect_to root_path
     end
   end
 
