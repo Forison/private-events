@@ -22,4 +22,17 @@ class SessionsController < ApplicationController
     log_out if logged_in?
     redirect_to root_path
   end
+
+  def logged_in?
+    !current_user.nil?
+  end
+
+  def log_out
+    session.delete(:user_id)
+    @current_user = nil
+  end
+
+  def log_in(user)
+    session[:user_id] = user.id
+  end
 end
