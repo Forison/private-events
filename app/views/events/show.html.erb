@@ -1,0 +1,41 @@
+<h1 class="text-center">event details</h1>
+<main class="container">
+        <div class="mx-auto  border border-success events">
+                <div class="border">
+                        <h1 class="text-center"><%= @event.event_title %></h1>
+                        <p><%= @event.description %></p>
+                        <h4>When is it taking place: <small><%= time_ago_in_words(@event.date) %> from
+                                        today</small> </h4>
+                </div>
+                <strong>hosted by: </strong><small><%= User.find(@event.user_id).name %></small>
+                <br>
+                <div class="border">
+                        <strong>Attendees :</strong>
+                        <% @event.users.each do |x| %>
+                        <ul>
+
+                                <% if x.attendances.not_invited.pluck(:event_id).include?@event.id %>
+                                <li><%= x.name %></li>
+                                <% end %>
+                        </ul>
+                        <% end %>
+                </div>
+                <% if logged_in? %>
+
+                <% if current_user.attendances.invited.pluck(:event_id).include?@event.id%>
+
+                <h4 class="invitation">You have been invited to this event!
+                       <br>Click the button to confirm you are attending.</h4>
+                        <%= form_for(@attendance , url: events_attend_path ) do |f| %>
+                        <%= f.hidden_field :user_id, :value => current_user.id %>
+                        <%= f.hidden_field :event_id, :value => @event.id %>
+                        <%= f.submit "attend" , class: "btn btn btn-success" %> <br>
+
+                        <% end %>
+
+                <% end %>
+                <% end %>
+
+
+        </div>
+</main>

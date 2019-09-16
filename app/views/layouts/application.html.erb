@@ -1,15 +1,39 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>PrivateEvents</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+<head>
+  <title>PrivateEvents</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-  <body>
-    <%= yield %>
-  </body>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<nav class="nav-eventia navbar flex-row  d-flex flex-nowrap">
+  <div class="tborder"><%= link_to  "Main", root_path, class:"nav-text" %> <br></div>
+  <% if !logged_in? %>
+  <div class="tborder"><%= link_to  "All the events", events_path, class:"nav-text" %> <br> </div>
+  <div class="tborder"><%= link_to  "Sign up", new_users_path, class:"nav-text" %> <br></div>
+  <div class="tborder"><%= link_to  "Log in", login_path, class:"nav-text" %> <br> </div>
+  <%else%>
+  <div class="tborder"><%= link_to  "Create event", new_event_path, class:"nav-text" %> <br> </div>
+  <div class="tborder"><%= link_to  "All the events", events_path, class:"nav-text" %> <br> </div>
+  <div class="tborder"><%= link_to  "Your events", users_path(current_user), class:"nav-text" %> <br> </div>
+  <div class="tborder"><%= link_to  "Log out", logout_path, method: :delete , class:"nav-text" %> <br> </div>
+  <%end%>
+</nav>
+
+
+<body>
+
+  <% flash.each do |message_type,message| %>
+  <div class="alert alert-<%=message_type%>"><%=message%></div>
+  <%end%>
+  <%= yield %>
+
+</body>
+
+<!-- <%= debug(params) if Rails.env.development? %> -->
+
 </html>

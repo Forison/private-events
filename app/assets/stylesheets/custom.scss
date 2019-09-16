@@ -1,0 +1,186 @@
+@import "bootstrap";
+@import url('https://fonts.googleapis.com/css?family=Acme|Indie+Flower|Yellowtail&display=swap');
+
+
+body {
+    background:linear-gradient(#6aa372, #67a36e);
+    margin-top: 60px;
+    font-family: 'Acme', sans-serif;
+}
+
+h1,
+h2,
+h3 {
+    color: whitesmoke;
+    font-family: 'Yellowtail', cursive;
+
+}
+
+h5,h4{
+    font-family: 'Indie Flower', cursive;
+
+}
+
+h4{
+    background: linear-gradient(#396b3f, #205927);
+    color: #76a17b;
+}
+
+.events {
+    background: rgb(158, 199, 130);
+    max-height: 100%;
+    box-shadow: 0 0 0 3px rgba(75, 74, 74, 0.2);
+}
+
+.events {
+    background: rgb(158, 199, 130);
+    max-height: 100%;
+    max-width: 500px;
+    box-shadow: 0 0 0 3px rgba(75, 74, 74, 0.2);
+}
+
+
+
+//website boxes
+
+.webox {
+    background-image: url(/assets/back.jpg);
+}
+
+// borders
+
+.mb-std {
+    margin-bottom: 100px;
+}
+
+.mb-bit {
+    margin-bottom: 50px;
+}
+
+.mt-std {
+    margin-top: 5px;
+}
+
+// heights
+
+.tall-box {
+    height: 20rem;
+    max-height: 100%;
+    display: table;
+    width: 100%;
+
+}
+
+
+// navigation bar
+
+.nav-eventia {
+    background: linear-gradient(#396b3f, #205927);
+    height: 50px;
+    position: fixed;
+    /* Set the navbar to fixed position */
+    top: 0;
+    /* Position the navbar at the top of the page */
+    width: 100%;
+    /* Full width */
+    z-index: 9999;
+    box-shadow: 0 0 0 5px rgba(75, 74, 74, 0.2);
+
+
+}
+
+
+
+.tborder{
+    height: 50px;
+    padding-top: 1%;
+}
+
+.nav-text{
+    color: #6aa372;
+    font-weight: bold;
+}
+
+.nav-text:hover{
+    color:white;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+
+// announcements
+
+.invitation{
+
+    font-weight: bold;
+    color: rgb(221, 114, 114);
+}
+
+.invitation2{
+    font-weight: bold;
+    color: rgb(221, 114, 114);
+    background: none;
+    font-size: 1.2rem;
+}
+
+
+// forms
+
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+   .css-form{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    border: #134419 1px solid;
+
+  }
+  
+  input[type=submit]:hover {
+    background-color: #45a049;
+    border: #134419 1px solid;
+  }
+  
+  div {
+    border-radius: 5px;
+    padding: 20px;
+  }
+
+  .signup_wrap{
+
+    width: 500px;
+    background: linear-gradient(#396b3f, #205927);
+  }
+
+  .font-nav{
+    color: #76a17b;
+    font-weight: bold;
+  }
+  //addo
+.wrap{
+      width: 100%;
+      border: 1px solid #396b3f;
+  }

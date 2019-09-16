@@ -1,0 +1,26 @@
+<main>
+    <%= provide(:title, "signup")%>
+    <div class="space"></div>
+    <div class="container ">
+        <div class=" shaddow col-xs-10 mx-auto col-sm-6  col-md-4 col-lg-4 signup_wrap">
+            <h1 class="text-center signup">Signup</h1>
+            <%= form_for(@user , url: users_path ) do |f| %>
+            <%= f.label :name, class: "font-nav" %> <br>
+            <%= f.text_field :name, class: 'form-control' %> <br>
+
+            <%= f.label :email , class: "font-nav"%> <br>
+            <%= f.email_field :email ,class: "form-control" %> <br>
+
+            <%= f.label :password, class: "font-nav" %> <br>
+            <%= f.password_field :password,  class: "form-control" %> <br>
+
+            <%= f.label :password_confirmation , class: "font-nav"%> <br>
+            <%= f.password_field :password_confirmation ,class: "form-control" %> <br>
+
+            <%= f.submit "create" , class: "btn btn-primary" %> <br>
+            <p class="note font-nav">already a member ? <%= link_to "log in", login_path %> </p>
+            <% end %>
+
+        </div>
+    </div>
+</main>

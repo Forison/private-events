@@ -1,0 +1,60 @@
+<main class="container">
+    <h1 class="text-center m-5">All Events</h1>
+    <h1>Upcoming</h1>
+    <div class="row">
+
+        <% @upcoming_event.each do |event| %>
+        <div class="col-lg-4">
+            <a href="<%= event_path(event.id) %>" style="text-decoration: none">
+                <div class="  border border-success events">
+                    <div class="border">
+                        <h3 class="text-center text-capitalize"><%= event.event_title %></h3>
+                        <p><%= event.description[0..20] + "..." %></p>
+                        <h4>When is it taking place: <small><%= time_ago_in_words(event.date) %> from
+                                today</small> </h4>
+                    </div>
+                    <strong>hosted by: </strong><small><%= User.find(event.user_id).name %></small>
+                    <br>
+            </a>
+
+            <% if logged_in? %>
+            <% if current_user.attendances.invited.pluck(:event_id).include?event.id %>
+
+            <h4 class="invitation2">You have been invited to this event!
+                   <br>Click the button to confirm you are attending.</h4>
+                    <%= form_for(@attendance , url: events_attend_path ) do |f| %>
+                    <%= f.hidden_field :user_id, :value => current_user.id %>
+                    <%= f.hidden_field :event_id, :value => event.id %>
+                    <%= f.submit "attend" , class: "btn btn btn-success" %> <br>
+
+                    <% end %>
+
+            <% end %>
+            <% end %>
+
+        </div>
+
+        </div>
+        <% end %>
+    </div>
+    <hr>
+    <h1>Past</h1>
+    <div class="row">
+
+        <% @past_event.each do |event| %>
+        <div class="col-lg-4">
+            <a href="<%= event_path(event.id) %>" style="text-decoration: none">
+                <div class="  border border-success events">
+                    <div class="border">
+                        <p><%= event.description[0..80] %></p>
+                        <h4>When is it taking place: <small><%= time_ago_in_words(event.date) %> ago</small> </h4>
+                    </div>
+                    <strong>hosted by: </strong><small><%= User.find(event.user_id).name %></small>
+                    <br>
+                </div>
+            </a>
+        </div>
+        <% end %>
+    </div>
+    </div>
+</main>
